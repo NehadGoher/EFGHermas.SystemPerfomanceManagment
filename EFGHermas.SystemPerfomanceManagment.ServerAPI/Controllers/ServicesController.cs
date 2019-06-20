@@ -28,10 +28,10 @@ namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Controllers
         }
 
         // GET: api/Services/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Service>> GetService(int id)
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Service>> GetService(string name)
         {
-            var service = await _context.Services.FindAsync(id);
+            var service = await _context.Services.FindAsync(name);
 
             if (service == null)
             {
@@ -41,35 +41,35 @@ namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Controllers
             return service;
         }
 
-        // PUT: api/Services/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutService(int id, Service service)
-        {
-            if (id != service.Id)
-            {
-                return BadRequest();
-            }
+        //// PUT: api/Services/5
+        //[HttpPut("{name}")]
+        //public async Task<IActionResult> PutService(int id, Service service)
+        //{
+        //    if (id != service.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(service).State = EntityState.Modified;
+        //    _context.Entry(service).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ServiceExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ServiceExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/Services
         [HttpPost]
@@ -78,28 +78,28 @@ namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Controllers
             _context.Services.Add(service);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetService", new { id = service.Id }, service);
+            return CreatedAtAction("GetService", new { name = service.DisplayName }, service);
         }
 
-        // DELETE: api/Services/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Service>> DeleteService(int id)
+        //// DELETE: api/Services/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<Service>> DeleteService(int id)
+        //{
+        //    var service = await _context.Services.FindAsync(id);
+        //    if (service == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _context.Services.Remove(service);
+        //    await _context.SaveChangesAsync();
+
+        //    return service;
+        //}
+
+        private bool ServiceExists(string name)
         {
-            var service = await _context.Services.FindAsync(id);
-            if (service == null)
-            {
-                return NotFound();
-            }
-
-            _context.Services.Remove(service);
-            await _context.SaveChangesAsync();
-
-            return service;
-        }
-
-        private bool ServiceExists(int id)
-        {
-            return _context.Services.Any(e => e.Id == id);
+            return _context.Services.Any(e => e.DisplayName == name);
         }
     }
 }

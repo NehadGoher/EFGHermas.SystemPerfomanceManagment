@@ -8,9 +8,9 @@ namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Interfaces
 {
     interface IAgent
     {
-        List<Service> GetServices();
-        Service GetServiceById(int Id);
-        void StartService(int Id);
-        void StopService(int Id);
+        Task<List<Service>> GetServicesAsync();
+        Task<Service> GetServiceById(string name);
+        void StartService(string name);
+        void StopService(string name);
     }
 }
