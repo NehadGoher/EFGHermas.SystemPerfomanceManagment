@@ -1,4 +1,4 @@
-﻿using EFGHermas.SystemPerfomanceManagment.AgentAPI.Models;
+﻿using EFGHermes.SystemPerfomanceManagment.AgentAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFGHermas.SystemPerfomanceManagment.AgentAPI.Controllers
+namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Controllers
 {
     [Route("api/[Controller]")]
     [ApiController]

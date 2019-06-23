@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EFGHermas.SystemPerfomanceManagment.ServerAPI.Models;
+using EFGHermes.SystemPerfomanceManagment.ServerAPI.Models;
 
-namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Controllers
+namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

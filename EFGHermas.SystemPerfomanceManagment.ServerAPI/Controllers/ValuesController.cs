@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Controllers
+namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

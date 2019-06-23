@@ -1,4 +1,4 @@
-﻿using EFGHermas.SystemPerfomanceManagment.ServerAPI.Services;
+﻿using EFGHermes.SystemPerfomanceManagment.ServerAPI.Services;
 using System;
 
 namespace ServerApiTestConsoleCore

@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace EFGHermas.SystemPerfomanceManagment.AgentAPI
+namespace EFGHermes.SystemPerfomanceManagment.AgentAPI
 {
     public class Startup
     {

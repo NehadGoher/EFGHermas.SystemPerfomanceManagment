@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace EFGHermas.SystemPerfomanceManagment.AgentAPI.Interfaces
+namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Interfaces
 {
     public interface IServicesController
     {

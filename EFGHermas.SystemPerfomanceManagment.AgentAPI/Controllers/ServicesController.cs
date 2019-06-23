@@ -5,12 +5,12 @@ using System.Linq;
 using System.Net.Http;
 using System.ServiceProcess;
 using System.Threading.Tasks;
-using EFGHermas.SystemPerfomanceManagment.AgentAPI.Interfaces;
-using EFGHermas.SystemPerfomanceManagment.AgentAPI.Models;
-using EFGHermas.SystemPerfomanceManagment.ServerAPI.Controllers;
+using EFGHermes.SystemPerfomanceManagment.AgentAPI.Interfaces;
+using EFGHermes.SystemPerfomanceManagment.AgentAPI.Models;
+using EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EFGHermas.SystemPerfomanceManagment.AgentAPI.Controllers
+namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

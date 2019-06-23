@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EFGHermas.SystemPerfomanceManagment.ServerAPI
+namespace EFGHermes.SystemPerfomanceManagment.ServerAPI
 {
     public class Program
     {

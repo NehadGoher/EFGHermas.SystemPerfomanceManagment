@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFGHermas.SystemPerfomanceManagment.AgentAPI.Models
+namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Models
 {
     public class Proc
     {

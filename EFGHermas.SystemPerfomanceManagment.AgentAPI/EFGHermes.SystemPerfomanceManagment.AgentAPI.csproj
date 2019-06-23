@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EFGHermas.SystemPerfomanceManagment.ServerAPI\EFGHermas.SystemPerfomanceManagment.ServerAPI.csproj" />
+    <ProjectReference Include="..\EFGHermas.SystemPerfomanceManagment.ServerAPI\EFGHermes.SystemPerfomanceManagment.ServerAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

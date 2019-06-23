@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFGHermas.SystemPerfomanceManagment.ServerAPI", "EFGHermas.SystemPerfomanceManagment.ServerAPI\EFGHermas.SystemPerfomanceManagment.ServerAPI.csproj", "{E9274728-63D1-4D19-9D83-6478589EC8D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFGHermes.SystemPerfomanceManagment.ServerAPI", "EFGHermas.SystemPerfomanceManagment.ServerAPI\EFGHermes.SystemPerfomanceManagment.ServerAPI.csproj", "{E9274728-63D1-4D19-9D83-6478589EC8D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestService", "TestService\TestService.csproj", "{94009501-B532-4C5B-A3A3-17F7284C7A68}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFGHermas.SystemPerfomanceManagment.AgentAPI", "EFGHermas.SystemPerfomanceManagment.AgentAPI\EFGHermas.SystemPerfomanceManagment.AgentAPI.csproj", "{12ED642F-617A-4580-A4A2-D609F7197E44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFGHermes.SystemPerfomanceManagment.AgentAPI", "EFGHermas.SystemPerfomanceManagment.AgentAPI\EFGHermes.SystemPerfomanceManagment.AgentAPI.csproj", "{12ED642F-617A-4580-A4A2-D609F7197E44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerApiTest", "ServerApiTest\ServerApiTest.csproj", "{7FE86203-4E18-477D-B14A-13152624FDC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApiTest", "ServerApiTest\ServerApiTest.csproj", "{7FE86203-4E18-477D-B14A-13152624FDC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerApiTestConsoleCore", "ServerApiTestConsoleCore\ServerApiTestConsoleCore.csproj", "{B3FCC433-6942-4E95-87B3-8D2857E41D16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApiTestConsoleCore", "ServerApiTestConsoleCore\ServerApiTestConsoleCore.csproj", "{B3FCC433-6942-4E95-87B3-8D2857E41D16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

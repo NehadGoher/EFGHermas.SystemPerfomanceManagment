@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EFGHermas.SystemPerfomanceManagment.ServerAPI.Models;
+using EFGHermes.SystemPerfomanceManagment.ServerAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace EFGHermas.SystemPerfomanceManagment.ServerAPI
+namespace EFGHermes.SystemPerfomanceManagment.ServerAPI
 {
     public class Startup
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Threading.Tasks;
 
-namespace EFGHermas.SystemPerfomanceManagment.AgentAPI.Models
+namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Models
 {
     public class Service
     {

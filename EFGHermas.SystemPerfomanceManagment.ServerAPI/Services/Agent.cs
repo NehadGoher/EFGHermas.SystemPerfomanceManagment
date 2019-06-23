@@ -1,5 +1,5 @@
-﻿using EFGHermas.SystemPerfomanceManagment.ServerAPI.Interfaces;
-using EFGHermas.SystemPerfomanceManagment.ServerAPI.Models;
+﻿using EFGHermes.SystemPerfomanceManagment.ServerAPI.Interfaces;
+using EFGHermes.SystemPerfomanceManagment.ServerAPI.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EFGHermas.SystemPerfomanceManagment.ServerAPI.Services
+namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Services
 {
     public class Agent : IAgent
     {
