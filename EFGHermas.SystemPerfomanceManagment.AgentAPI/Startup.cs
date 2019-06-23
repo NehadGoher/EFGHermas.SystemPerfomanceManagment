@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,13 +45,27 @@ namespace EFGHermes.SystemPerfomanceManagment.AgentAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
-            using (HttpClient client = new HttpClient())
+            try
             {
-                string uri = "https://localhost:44350/api/";
-                HttpContent httpContent = new FormUrlEncodedContent(new[] {
-                    new KeyValuePair<string, string>("PCname", Environment.MachineName) });
-                client.PostAsync(uri, httpContent);
+                HttpClient client = new HttpClient();
+
+
+                string uri = "https://localhost:44350/api/heartbeat";
+                //HttpContent httpContent = new FormUrlEncodedContent(new[] {
+                //    new KeyValuePair<string, string>("PCname", Environment.MachineName) });
+                var timer1 = new Timer(_ => client.GetAsync(uri), null, 0, 2000);
+                Thread.Sleep(TimeSpan.FromMinutes(1));
+                //var res = client.GetAsync(uri);
+                //Console.WriteLine(res.Result.ToString());
+                //Console.Read();
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+
         }
     }
 }
