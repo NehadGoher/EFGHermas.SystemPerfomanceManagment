@@ -13,8 +13,5 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
         public virtual List<Database> Databases { get; set; }
         public virtual List<ServiceRelationship> OutboundServices { get; set; }
         public int ServiceStatus { get; set; }
-
-
-
     }
 }

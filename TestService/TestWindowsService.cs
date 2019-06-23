@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.ServiceModel;
 using System.ServiceProcess;
 using System.Web;
 
 namespace TestService
 {
-    public class TestWindowsService : ServiceBase
+    public class TestWindowsService : MyServiceBase
     {
         public ServiceHost serviceHost = null;
         public TestWindowsService()
@@ -24,6 +25,7 @@ namespace TestService
         // Start the Windows service.
         protected override void OnStart(string[] args)
         {
+            base.OnStart(args);
             if (serviceHost != null)
             {
                 serviceHost.Close();

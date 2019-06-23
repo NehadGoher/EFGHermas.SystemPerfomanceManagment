@@ -27,10 +27,13 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
                 .WithMany(s => s.OutboundServices)
                 .HasForeignKey(s => s.FromServiceId);
 
-            modelBuilder.Entity<ServiceRelationship>().HasOne(s => s.ToService)
+            modelBuilder.Entity<ServiceRelationship>()
+                .HasOne(s => s.ToService)
                 .WithMany()
                 .HasForeignKey(s => s.ToServiceId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+            //modelBuilder.Entity<Service>().HasData();
         }
 
         public DbSet<Service> Services { get; set; }
