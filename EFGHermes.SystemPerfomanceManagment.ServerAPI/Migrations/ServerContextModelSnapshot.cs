@@ -55,12 +55,11 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
             modelBuilder.Entity("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.ServiceRelationship", b =>
                 {
                     b.HasOne("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Service", "FromService")
-                        .WithMany("ServiceRelationships")
-                        .HasForeignKey("FromServiceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("OutgoingServices")
+                        .HasForeignKey("FromServiceId");
 
                     b.HasOne("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Service", "ToService")
-                        .WithMany()
+                        .WithMany("IngoingServices")
                         .HasForeignKey("ToServiceId");
                 });
 #pragma warning restore 612, 618

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    [Migration("20190624083844_initial")]
-    partial class initial
+    [Migration("20190624093350_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,12 +57,11 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
             modelBuilder.Entity("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.ServiceRelationship", b =>
                 {
                     b.HasOne("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Service", "FromService")
-                        .WithMany("ServiceRelationships")
-                        .HasForeignKey("FromServiceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("OutgoingServices")
+                        .HasForeignKey("FromServiceId");
 
                     b.HasOne("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Service", "ToService")
-                        .WithMany()
+                        .WithMany("IngoingServices")
                         .HasForeignKey("ToServiceId");
                 });
 #pragma warning restore 612, 618

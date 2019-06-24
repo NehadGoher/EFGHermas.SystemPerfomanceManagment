@@ -15,32 +15,33 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
         public string DisplayName { get; set; }
 
         [NotMapped]
-        public Service[] OutgoingServices
+        public int[] OutgoingServicesIds
         {
             get
             {
-                return ServiceRelationships.Where(s => s.FromServiceId == this.Id)
-                    .Select(s => s.ToService).ToArray();
+                return OutgoingServices
+                    .Select(s => s.ToServiceId).ToArray();
             }
             private set { }
-        } //
+        }
 
         [NotMapped]
-        public Service[] IngoingServices
+        public int[] IngoingServicesIds
         {
             get
             {
-                return ServiceRelationships.Where(s => s.ToServiceId == this.Id)
-                    .Select(s => s.FromService).ToArray();
+                return IngoingServices
+                    .Select(s => s.FromServiceId).ToArray();
             }
             private set { }
-        } //
+        }
 
         public string DBConnectionString { get; set; }
 
         public int ServiceStatus { get; set; }
 
 
-        public List<ServiceRelationship> ServiceRelationships { get; set; }
+        public virtual ICollection<ServiceRelationship> OutgoingServices { get; set; } = new List<ServiceRelationship>();
+        public virtual ICollection<ServiceRelationship> IngoingServices { get; set; } = new List<ServiceRelationship>();
     }
 }

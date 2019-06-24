@@ -22,9 +22,28 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
 
         // GET: api/Services
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Service>>> GetServices()
+        public async Task<ActionResult<IEnumerable<ServiceDTO>>> GetServices()
         {
-            return await _context.Services.ToListAsync();
+            var result = await _context.Services
+                .Include(s => s.OutgoingServices)
+                .Include(s => s.IngoingServices)
+                .ToArrayAsync();
+
+            var result2 = result
+                .Select(s => new ServiceDTO
+                {
+                    Id = s.Id,
+                    IP = s.IP,
+                    Port = s.Port,
+                    DBConnectionString = s.DBConnectionString,
+                    ServiceStatus = s.ServiceStatus,
+                    DisplayName = s.DisplayName,
+                    IngoingServicesIds = s.IngoingServicesIds,
+                    OutgoingServicesIds = s.OutgoingServicesIds
+                }).ToArray();
+                
+
+            return result2;
         }
 
         // GET: api/Services/5

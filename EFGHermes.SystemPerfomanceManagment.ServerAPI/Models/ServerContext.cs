@@ -17,21 +17,21 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
         {
             base.OnModelCreating(modelBuilder);
 
+
             modelBuilder.Entity<ServiceRelationship>()
                 .HasKey(s => new { s.FromServiceId, s.ToServiceId });
 
             modelBuilder.Entity<ServiceRelationship>()
                 .HasOne(s => s.FromService)
-                .WithMany(s => s.ServiceRelationships)
-                .HasForeignKey(s => s.FromServiceId);
+                .WithMany(s => s.OutgoingServices)
+                .HasForeignKey(s => s.FromServiceId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             modelBuilder.Entity<ServiceRelationship>()
                 .HasOne(s => s.ToService)
-                .WithMany()
+                .WithMany(s => s.IngoingServices)
                 .HasForeignKey(s => s.ToServiceId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
-
-            //modelBuilder.Entity<Service>().HasData();
         }
 
         public DbSet<Service> Services { get; set; }
