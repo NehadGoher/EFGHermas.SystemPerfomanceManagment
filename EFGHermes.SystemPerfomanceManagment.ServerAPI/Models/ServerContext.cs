@@ -17,14 +17,12 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<EndPoint>().HasKey(s => new { s.ServiceId, s.Address });
-
             modelBuilder.Entity<ServiceRelationship>()
                 .HasKey(s => new { s.FromServiceId, s.ToServiceId });
 
             modelBuilder.Entity<ServiceRelationship>()
                 .HasOne(s => s.FromService)
-                .WithMany(s => s.OutboundServices)
+                .WithMany(s => s.ServiceRelationships)
                 .HasForeignKey(s => s.FromServiceId);
 
             modelBuilder.Entity<ServiceRelationship>()

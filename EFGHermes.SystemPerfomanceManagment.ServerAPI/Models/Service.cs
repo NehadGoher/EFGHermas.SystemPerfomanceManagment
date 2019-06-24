@@ -10,20 +10,37 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
     public class Service
     {
         public int Id { get; set; }
-        public string IP { get; set; }      //
-        public int Port { get; set; }       //
+        public string IP { get; set; }
+        public int Port { get; set; }
+        public string DisplayName { get; set; }
 
         [NotMapped]
-        public Service[] OutgoingServices { get; set; } //
+        public Service[] OutgoingServices
+        {
+            get
+            {
+                return ServiceRelationships.Where(s => s.FromServiceId == this.Id)
+                    .Select(s => s.ToService).ToArray();
+            }
+            private set { }
+        } //
 
         [NotMapped]
-        public Service[] IngoingServices { get; set; } //
+        public Service[] IngoingServices
+        {
+            get
+            {
+                return ServiceRelationships.Where(s => s.ToServiceId == this.Id)
+                    .Select(s => s.FromService).ToArray();
+            }
+            private set { }
+        } //
 
         public string DBConnectionString { get; set; }
 
         public int ServiceStatus { get; set; }
 
 
-        public virtual List<ServiceRelationship> OutboundServices { get; set; }
+        public List<ServiceRelationship> ServiceRelationships { get; set; }
     }
 }

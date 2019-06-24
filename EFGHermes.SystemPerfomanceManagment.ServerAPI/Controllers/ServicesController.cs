@@ -42,17 +42,6 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult<Service>> PostService(Service service)
-        {
-            _context.Services.Add(service);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetService", new { name = service.DisplayName }, service);
-        }
-
-
-
         private bool ServiceExists(string name)
         {
             return _context.Services.Any(e => e.DisplayName == name);

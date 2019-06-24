@@ -15,7 +15,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
         public ActionResult<string> CheckHeartBeat()
         {
             return "I'am alive";
-            
+
         }
     }
 }

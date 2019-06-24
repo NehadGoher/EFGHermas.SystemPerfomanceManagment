@@ -32,7 +32,7 @@ namespace TestService
     public class CompositeType
     {
         bool boolValue = true;
-        string stringValue = "Hello ";
+        string stringValue = "Hello";
 
         [DataMember]
         public bool BoolValue
@@ -46,6 +46,8 @@ namespace TestService
         {
             get { return stringValue; }
             set { stringValue = value; }
+
         }
+
     }
 }
