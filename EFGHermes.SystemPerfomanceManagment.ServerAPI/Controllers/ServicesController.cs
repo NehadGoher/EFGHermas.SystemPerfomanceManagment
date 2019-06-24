@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EFGHermes.SystemPerfomanceManagment.ServerAPI.Models;
+using System.ServiceProcess;
 
 namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
 {
@@ -20,6 +21,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
             _context = context;
         }
 
+        #region UI Region
         // GET: api/Services
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ServiceDTO>>> GetServices()
@@ -36,12 +38,12 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
                     IP = s.IP,
                     Port = s.Port,
                     DBConnectionString = s.DBConnectionString,
-                    ServiceStatus = s.ServiceStatus,
+                    ServiceStatus = s.ServiceStatus.ToString(),
                     DisplayName = s.DisplayName,
                     IngoingServicesIds = s.IngoingServicesIds,
                     OutgoingServicesIds = s.OutgoingServicesIds
                 }).ToArray();
-                
+
 
             return result2;
         }
@@ -65,5 +67,25 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
         {
             return _context.Services.Any(e => e.DisplayName == name);
         }
+
+
+
+        #endregion
+        private void EditServiceStatus(int Id, ServiceControllerStatus Status)
+        {
+            Service service = _context.Services.Find(Id);
+            service.ServiceStatus = (ServiceControllerStatus)Status;
+            _context.SaveChanges();
+        }
+        #region Integrator Region
+        public void NotifyServiceStart(int Id)
+        {
+            EditServiceStatus(Id, ServiceControllerStatus.Running);
+        }
+        public void NotIfyServiceStop(int Id)
+        {
+            EditServiceStatus(Id, ServiceControllerStatus.Stopped);
+        }
+        #endregion
     }
 }
