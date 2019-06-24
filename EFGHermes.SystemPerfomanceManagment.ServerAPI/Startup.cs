@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EFGHermes.SystemPerfomanceManagment.ServerAPI.Hubs;
 using EFGHermes.SystemPerfomanceManagment.ServerAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ServerContext>(s => s.UseSqlServer(Configuration.GetConnectionString("EFGHermas.SystemPerformanceManagemt.ServerDB")));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +48,10 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSignalR(routes=>
+            {
+                routes.MapHub<UIHub>("/uiHub");
+            });
         }
     }
 }
