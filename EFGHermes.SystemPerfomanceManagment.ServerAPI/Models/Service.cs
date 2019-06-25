@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.ServiceProcess;
 using System.Threading.Tasks;
 
 namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
@@ -38,7 +39,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
 
         public string DBConnectionString { get; set; }
 
-        public int ServiceStatus { get; set; }
+        public ServiceControllerStatus ServiceStatus { get; set; }
 
 
         public virtual ICollection<ServiceRelationship> OutgoingServices { get; set; } = new List<ServiceRelationship>();
