@@ -41,6 +41,11 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
 
         public ServiceControllerStatus ServiceStatus { get; set; }
 
+        [ForeignKey(nameof(Agent))]
+        public int AgentId { get; set; }
+
+        public Agent Agent { get; set; }
+
 
         public virtual ICollection<ServiceRelationship> OutgoingServices { get; set; } = new List<ServiceRelationship>();
         public virtual ICollection<ServiceRelationship> IngoingServices { get; set; } = new List<ServiceRelationship>();
