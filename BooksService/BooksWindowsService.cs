@@ -20,6 +20,11 @@ namespace BooksService
         // Start the Windows service.
         protected override void OnStart(string[] args)
         {
+            Start();
+        }
+
+        public void Start()
+        {
             if (serviceHost != null)
             {
                 serviceHost.Close();
@@ -35,6 +40,11 @@ namespace BooksService
         }
 
         protected override void OnStop()
+        {
+            Stop();
+        }
+
+        public new void Stop()
         {
             if (serviceHost != null)
             {

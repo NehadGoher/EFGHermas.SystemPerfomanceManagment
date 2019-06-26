@@ -18,23 +18,40 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Agent", b =>
+                {
+                    b.Property<int>("AgentId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("HostAddress");
+
+                    b.Property<string>("MachineName");
+
+                    b.HasKey("AgentId");
+
+                    b.ToTable("Agents");
+                });
+
             modelBuilder.Entity("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Service", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address");
+
+                    b.Property<int>("AgentId");
+
                     b.Property<string>("DBConnectionString");
 
                     b.Property<string>("DisplayName");
 
-                    b.Property<string>("IP");
-
-                    b.Property<int>("Port");
-
                     b.Property<int>("ServiceStatus");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
 
                     b.ToTable("Services");
                 });
@@ -50,6 +67,14 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
                     b.HasIndex("ToServiceId");
 
                     b.ToTable("ServiceRelationship");
+                });
+
+            modelBuilder.Entity("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Service", b =>
+                {
+                    b.HasOne("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.Agent", "Agent")
+                        .WithMany()
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EFGHermes.SystemPerfomanceManagment.ServerAPI.Models.ServiceRelationship", b =>

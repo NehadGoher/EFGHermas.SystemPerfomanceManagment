@@ -8,20 +8,40 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Agents",
+                columns: table => new
+                {
+                    AgentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MachineName = table.Column<string>(nullable: true),
+                    HostAddress = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agents", x => x.AgentId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IP = table.Column<string>(nullable: true),
-                    Port = table.Column<int>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
                     DisplayName = table.Column<string>(nullable: true),
                     DBConnectionString = table.Column<string>(nullable: true),
-                    ServiceStatus = table.Column<int>(nullable: false)
+                    ServiceStatus = table.Column<int>(nullable: false),
+                    AgentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Services_Agents_AgentId",
+                        column: x => x.AgentId,
+                        principalTable: "Agents",
+                        principalColumn: "AgentId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,6 +72,11 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
                 name: "IX_ServiceRelationship_ToServiceId",
                 table: "ServiceRelationship",
                 column: "ToServiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Services_AgentId",
+                table: "Services",
+                column: "AgentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -61,6 +86,9 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Services");
+
+            migrationBuilder.DropTable(
+                name: "Agents");
         }
     }
 }
