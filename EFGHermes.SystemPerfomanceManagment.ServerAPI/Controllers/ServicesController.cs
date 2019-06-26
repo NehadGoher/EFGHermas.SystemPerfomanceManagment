@@ -35,8 +35,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
                 .Select(s => new ServiceDTO
                 {
                     Id = s.Id,
-                    IP = s.IP,
-                    Port = s.Port,
+                    Address = s.Address,
                     DBConnectionString = s.DBConnectionString,
                     ServiceStatus = s.ServiceStatus.ToString(),
                     DisplayName = s.DisplayName,

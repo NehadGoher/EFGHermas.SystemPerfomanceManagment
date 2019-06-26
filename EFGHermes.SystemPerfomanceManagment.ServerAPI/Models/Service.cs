@@ -11,8 +11,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
     public class Service
     {
         public int Id { get; set; }
-        public string IP { get; set; }
-        public int Port { get; set; }
+        public string Address { get; set; }
         public string DisplayName { get; set; }
 
         [NotMapped]

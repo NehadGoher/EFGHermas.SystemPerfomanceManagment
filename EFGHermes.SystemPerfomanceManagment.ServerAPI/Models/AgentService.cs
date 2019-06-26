@@ -4,9 +4,9 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Threading.Tasks;
 
-namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Models
+namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
 {
-    public class Service
+    public class AgentService
     {
         //public String ServiceId { set; get; }
         public String ServiceName { set; get; }
@@ -19,7 +19,7 @@ namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Models
         public List<string> ClienContractNames;
         public List<string> ServiceEndpointAddresses;
         public List<string> ServiceContractNames;
-        public Service()
+        public AgentService()
         {
             ClienEndpointAddresses = new List<string>();
             ClienContractNames = new List<string>();

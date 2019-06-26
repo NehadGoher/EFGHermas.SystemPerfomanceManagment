@@ -19,7 +19,7 @@ namespace WindowsService5
             // base.OnStart(args);
             
             SerInfo.ServiceName = ConfigurationManager.AppSettings["ServiceName"];
-            SerInfo.ServiceState = "Service Runing";
+            SerInfo.ServiceState = ServiceControllerStatus.Running;
             SerInfo.DBName = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString.ToString();
             ServicesSection x = (ServicesSection)ConfigurationManager.GetSection("system.serviceModel/services");
 
@@ -39,6 +39,7 @@ namespace WindowsService5
                 SerInfo.ClienContractNames.Add(e.Contract);
             }
 
+            // send message to agent
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44396/api/");
             client.PostAsJsonAsync<ServiceInfo>("Ingreator", SerInfo);
@@ -109,13 +110,13 @@ namespace WindowsService5
         protected override void OnStop()
         {
             // base.OnStop();
-            SerInfo.ServiceState = "Service Stoped";
+            SerInfo.ServiceState = ServiceControllerStatus.Stopped;
         }
     }
     public class ServiceInfo
     {
         public string ServiceName { get; set; }
-        public string ServiceState { get; set; }
+        public ServiceControllerStatus ServiceState { get; set; }
         public string DBName { get; set; }
         public string dbServerName { get; set; }
         public List<string> ClienEndpointAddresses;

@@ -46,6 +46,8 @@ namespace EFGHermes.SystemPerfomanceManagment.AgentAPI
             app.UseHttpsRedirection();
             app.UseMvc();
 
+            
+
             // TODO: notify server that agent started
             //
             //
