@@ -9,11 +9,11 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Hubs
 {
     public class UIHub : Hub
     {
-        public void getServices()
+        public List<Service> getServices()
         {
-            List<Service> services;
-       //     Clients.All.getServices();
-
+            List<Service> services = null;
+            //    Clients.All.getServices();
+            return services;
         }
 
         public void startService(int id)

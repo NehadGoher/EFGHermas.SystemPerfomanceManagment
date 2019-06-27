@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EFGHermes.SystemPerfomanceManagment.ServerAPI.Models;
+using Microsoft.AspNetCore.SignalR;
+using EFGHermes.SystemPerfomanceManagment.ServerAPI.Hubs;
 
 namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
 {
@@ -14,12 +16,20 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
     public class ServicesController : ControllerBase
     {
         private readonly ServerContext _context;
+        private IHubContext<UIHub> _hub;
 
-        public ServicesController(ServerContext context)
+        public ServicesController(ServerContext context, IHubContext<UIHub> hub)
         {
             _context = context;
+            _hub = hub;
         }
+        // Example
+        public IActionResult Get()
+        {
+           
 
+            return Ok(new { Message = "Request Completed" });
+        }
         // GET: api/Services
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ServiceDTO>>> GetServices()
@@ -56,7 +66,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
             {
                 return NotFound();
             }
-
+            await _hub.Clients.All.SendAsync("getServices");
             return service;
         }
 

@@ -28,6 +28,14 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("http://localhost:8080")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ServerContext>(s => s.UseSqlServer(Configuration.GetConnectionString("EFGHermas.SystemPerformanceManagemt.ServerDB")));
             services.AddSignalR();
@@ -47,6 +55,7 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseMvc();
             app.UseSignalR(routes=>
             {
