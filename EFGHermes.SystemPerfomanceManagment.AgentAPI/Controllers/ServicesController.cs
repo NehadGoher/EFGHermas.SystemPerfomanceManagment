@@ -25,7 +25,8 @@ namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Controllers
             {
                 DisplayName = s.DisplayName,
                 ServiceName = s.ServiceName,
-                Status = s.Status
+                Status = s.Status,
+                MachineName = s.MachineName
             }).ToList();
 
             return servicesDTOs;

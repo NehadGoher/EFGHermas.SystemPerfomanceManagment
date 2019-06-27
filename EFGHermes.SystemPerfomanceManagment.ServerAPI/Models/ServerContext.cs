@@ -35,5 +35,6 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Models
         }
 
         public DbSet<Service> Services { get; set; }
+        public DbSet<Agent> Agents { get; set; }
     }
 }
