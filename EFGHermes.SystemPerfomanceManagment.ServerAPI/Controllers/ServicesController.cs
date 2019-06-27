@@ -76,10 +76,61 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
             service.ServiceStatus = (ServiceControllerStatus)Status;
             _context.SaveChanges();
         }
-        #region Integrator Region
-        public void NotifyServiceStart(int Id)
+        #region Agent Region
+        public void NotifyServiceStart(AgentService agentService)
         {
-            EditServiceStatus(Id, ServiceControllerStatus.Running);
+            var presistedAgent = _context.Agents.FirstOrDefault(a => a.MachineName == agentService.MachineName);
+            Service service = new Service()
+            {
+                Address = agentService.ServiceEndpointAddresses[0],
+                Agent = presistedAgent,
+                DBConnectionString = agentService.DBName,
+                DisplayName = agentService.DisplayName,
+                ServiceStatus = agentService.Status
+            };
+            var presistedService = _context.Services
+                .FirstOrDefault(s => s.DisplayName == service.DisplayName
+                || s.Address == service.Address);
+
+            if (presistedService == null)
+            {
+                _context.Services.Add(service);
+                _context.SaveChanges();
+            }
+            else
+            {
+                presistedService.Address = agentService.ServiceEndpointAddresses[0];
+                presistedService.Agent = presistedAgent;
+                presistedService.DBConnectionString = agentService.DBName;
+                presistedService.DisplayName = agentService.DisplayName;
+                presistedService.ServiceStatus = agentService.Status;
+                presistedService.OutgoingServices = new List<ServiceRelationship>();
+                _context.SaveChanges();
+            }
+
+            foreach (var clientAddress in agentService.ClienEndpointAddresses)
+            {
+                var client = _context.Services
+                    .FirstOrDefault(s => s.Address == clientAddress);
+                if (client == null)
+                {
+                    _context.Services.Add(new Service()
+                    {
+                        Address = clientAddress
+                    });
+                    _context.SaveChanges();
+                }
+                presistedService.OutgoingServices.Add(
+                    new ServiceRelationship()
+                    {
+                        FromService = presistedService,
+                        ToService = _context.Services
+                        .FirstOrDefault(s => s.Address == clientAddress)
+                    });
+                _context.SaveChanges();
+            }
+
+            //EditServiceStatus(Id, ServiceControllerStatus.Running);
         }
         public void NotIfyServiceStop(int Id)
         {

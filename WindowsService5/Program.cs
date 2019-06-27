@@ -5,7 +5,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsService5
+namespace Integrator
 {
     static class Program
     {

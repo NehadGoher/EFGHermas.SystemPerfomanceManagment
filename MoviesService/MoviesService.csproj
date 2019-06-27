@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B9D3878-4E89-45FC-8DBD-7EFB55C1778E}</ProjectGuid>
+    <ProjectGuid>{9BB688ED-A0BD-4C3A-8E20-16573EE67DAC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BooksService</RootNamespace>
-    <AssemblyName>BooksService</AssemblyName>
+    <RootNamespace>MoviesService</RootNamespace>
+    <AssemblyName>MoviesService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,20 +50,75 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooksService.cs" />
-    <Compile Include="BooksWindowsService.cs">
+    <Compile Include="Connected Services\BooksServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\CinemasServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="IMoviesService.cs" />
+    <Compile Include="MoviesService.cs" />
+    <Compile Include="MoviesWindowsService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IBooksService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\BooksServiceReference\books.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BooksServiceReference\books1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BooksServiceReference\BooksService.wsdl" />
+    <None Include="Connected Services\CinemasServiceReference\CinemasService.wsdl" />
+    <None Include="Connected Services\CinemasServiceReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\BooksServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\CinemasServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CinemasServiceReference\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CinemasServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CinemasServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CinemasServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BooksServiceReference\books.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BooksServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BooksServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BooksServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Integrator\Integrator.csproj">

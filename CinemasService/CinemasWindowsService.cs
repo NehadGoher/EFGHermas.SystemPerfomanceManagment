@@ -7,15 +7,15 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BooksService
+namespace CinemasService
 {
-    class BooksWindowsService : monitorService
+    class CinemasWindowsService : monitorService
     {
         public ServiceHost serviceHost = null;
-        public BooksWindowsService()
+        public CinemasWindowsService()
         {
             // Name the Windows Service
-            ServiceName = "BooksWindowsService";
+            ServiceName = "CinemasWindowsService";
         }
 
         // Start the Windows service.
@@ -34,7 +34,7 @@ namespace BooksService
 
             // Create a ServiceHost for the CalculatorService type and 
             // provide the base address.
-            serviceHost = new ServiceHost(typeof(BooksService));
+            serviceHost = new ServiceHost(typeof(CinemasService));
 
             // Open the ServiceHostBase to create listeners and start 
             // listening for messages.
@@ -56,4 +56,5 @@ namespace BooksService
             }
         }
     }
+
 }

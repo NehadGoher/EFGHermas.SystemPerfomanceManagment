@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B9D3878-4E89-45FC-8DBD-7EFB55C1778E}</ProjectGuid>
+    <ProjectGuid>{67B02CAF-03B1-4B8D-9F51-212A45E1A4E7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BooksService</RootNamespace>
-    <AssemblyName>BooksService</AssemblyName>
+    <RootNamespace>CinemasService</RootNamespace>
+    <AssemblyName>CinemasService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,20 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooksService.cs" />
-    <Compile Include="BooksWindowsService.cs">
+    <Compile Include="CinemasService.cs" />
+    <Compile Include="CinemasWindowsService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IBooksService.cs" />
+    <Compile Include="ICinemasService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Integrator\Integrator.csproj">

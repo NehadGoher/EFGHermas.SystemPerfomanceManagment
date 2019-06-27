@@ -36,34 +36,31 @@ namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Controllers
     [Route("/api/[Controller]")]
     public class IngreatorController : IIntegrator
     {
-      
-        
+
+
         // integrator calls this method to notify service started
 
         [HttpPost]
         public bool NotifyStart(Service serviceInfo)
         {
-
-         
-
             HttpClient http = new HttpClient();
             http.BaseAddress = new Uri("https://localhost:44350/api/");
-            HttpContent httpContent = new FormUrlEncodedContent(new[] {
-                new KeyValuePair<string, string>("MachineName", serviceInfo.MachineName/*machine name*/),
-                new KeyValuePair<string, string>("ServiceName", serviceInfo.ServiceName/*service name*/),
-                
-            });
 
-            http.PostAsync("services/notifyservicestart",httpContent);
+            //HttpContent httpContent = new FormUrlEncodedContent(new[] {
+            //    new KeyValuePair<string, string>("MachineName", serviceInfo.MachineName/*machine name*/),
+            //    new KeyValuePair<string, string>("ServiceName", serviceInfo.ServiceName/*service name*/),
+
+            //});
+
+            http.PostAsJsonAsync<Service>("services/notifyservicestart", serviceInfo);
             return true;
-        
         }
 
         // integrator calls this method to notify service stop
         [HttpPost("NotifyStop")]
         public bool NotifyStop(Service serviceInfo)
         {
-          
+
             HttpClient http = new HttpClient();
             http.BaseAddress = new Uri("https://localhost:44350/api/");
             HttpContent httpContent = new FormUrlEncodedContent(new[] {
@@ -74,9 +71,9 @@ namespace EFGHermes.SystemPerfomanceManagment.AgentAPI.Controllers
 
             http.PostAsync("services/notifyservicestop", httpContent/*post message*/);
             return true;
-        
-           
-            
+
+
+
         }
     }
 }

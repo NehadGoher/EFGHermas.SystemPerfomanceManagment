@@ -48,44 +48,44 @@ namespace EFGHermes.SystemPerfomanceManagment.ServerAPI.Controllers
                     {
                         Service service = new Service()
                         {
-                            Address = agentService.ServiceEndpointAddresses[0],
+                            //Address = agentService.ServiceEndpointAddresses[0],
                             Agent = presistedAgent,
-                            DBConnectionString = agentService.DBName,
+                            //DBConnectionString = agentService.DBName,
                             DisplayName = agentService.DisplayName,
                             ServiceStatus = agentService.Status
                         };
                         var presistedService = _context.Services
-                            .FirstOrDefault(s => s.Address == service.Address);
-                        foreach (var clientAddress in agentService.ClienEndpointAddresses)
-                        {
-                            var ss = _context.Services
-                                .FirstOrDefault(s => s.Address == clientAddress);
-                            if (ss == null)
-                            {
-                                _context.Services.Add(new Service()
-                                {
-                                    Address = clientAddress
-                                });
-                                _context.SaveChanges();
-                            }
-                            service.OutgoingServices.Add(
-                                new ServiceRelationship()
-                                {
-                                    FromService = service,
-                                    ToService = _context.Services
-                                    .FirstOrDefault(s => s.Address == clientAddress)
-                                });
-                        }
+                            .FirstOrDefault(s => s.DisplayName == service.DisplayName);
+                        //foreach (var clientAddress in agentService.ClienEndpointAddresses)
+                        //{
+                        //    var ss = _context.Services
+                        //        .FirstOrDefault(s => s.Address == clientAddress);
+                        //    if (ss == null)
+                        //    {
+                        //        _context.Services.Add(new Service()
+                        //        {
+                        //            Address = clientAddress
+                        //        });
+                        //        _context.SaveChanges();
+                        //    }
+                        //    service.OutgoingServices.Add(
+                        //        new ServiceRelationship()
+                        //        {
+                        //            FromService = service,
+                        //            ToService = _context.Services
+                        //            .FirstOrDefault(s => s.Address == clientAddress)
+                        //        });
+                        //}
                         if (presistedService == null)
                         {
                             _context.Services.Add(service);
                             _context.SaveChanges();
                         }
-                        else if (presistedService.DisplayName == null || presistedService.DisplayName == "")
+                        else 
                         {
-                            presistedService.Address = agentService.ServiceEndpointAddresses[0];
+                            //presistedService.Address = agentService.ServiceEndpointAddresses[0];
                             presistedService.Agent = presistedAgent;
-                            presistedService.DBConnectionString = agentService.DBName;
+                            //presistedService.DBConnectionString = agentService.DBName;
                             presistedService.DisplayName = agentService.DisplayName;
                             presistedService.ServiceStatus = agentService.Status;
                             _context.SaveChanges();

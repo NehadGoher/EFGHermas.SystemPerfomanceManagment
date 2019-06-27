@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BooksService
+namespace MoviesService
 {
-    public class BooksService : IBooksService
+    public class MoviesServiceClass : IMoviesService
     {
-        public string GetBook()
+        public string GetMovies()
         {
-            return "Book";
+            return "Movie";
         }
     }
 }

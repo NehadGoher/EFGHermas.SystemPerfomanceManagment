@@ -15,7 +15,7 @@ using System.IO;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
-namespace WindowsService5
+namespace Integrator
 {
     public partial class Finalser2 : monitorService 
     {

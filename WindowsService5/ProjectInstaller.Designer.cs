@@ -1,4 +1,4 @@
-﻿namespace WindowsService5
+﻿namespace Integrator
 {
     partial class ProjectInstaller
     {
